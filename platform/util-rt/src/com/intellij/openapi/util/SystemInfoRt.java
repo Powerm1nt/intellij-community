@@ -39,6 +39,7 @@ public final class SystemInfoRt {
   public static final boolean isSolaris = _OS_NAME.startsWith("sunos");
   public static final boolean isUnix = !isWindows;
   public static final boolean isXWindow = isUnix && !isMac;
+  public static final boolean isHaiku = _OS_NAME.startsWith("haiku");
 
   public static final boolean isJBSystemMenu = isMac && Boolean.parseBoolean(System.getProperty("jbScreenMenuBar.enabled", "true"));
 

@@ -310,7 +310,7 @@ public final class PathManager {
   }
 
   /**
-   * Returns the path to the directory where data common for all IntelliJ-based IDEs is stored. 
+   * Returns the path to the directory where data common for all IntelliJ-based IDEs is stored.
    */
   public static synchronized @NotNull Path getCommonDataPath() {
     Path path = ourCommonDataPath;
@@ -347,7 +347,7 @@ public final class PathManager {
     ourPathSelector = newValue;
     System.setProperty(PROPERTY_PATHS_SELECTOR, newValue);
   }
-  
+
   /**
    * Returns the path to the directory where settings are stored.
    * Usually, you don't need to access this directory directly, use {@link com.intellij.openapi.components.PersistentStateComponent} instead.
@@ -449,9 +449,9 @@ public final class PathManager {
   }
 
   /**
-   * Returns the path to the directory where caches are stored. 
+   * Returns the path to the directory where caches are stored.
    * To store plugin-related caches, always use a subdirectory named after the plugin.
-   * To store caches related to a particular project, use 
+   * To store caches related to a particular project, use
    * {@link com.intellij.openapi.project.ProjectUtil#getProjectDataPath} instead.
    */
   public static @NotNull Path getSystemDir() {
@@ -484,6 +484,7 @@ public final class PathManager {
     LINUX,
     WINDOWS,
     MACOS,
+    HAIKU
   }
 
   @ApiStatus.Internal
@@ -496,6 +497,9 @@ public final class PathManager {
     }
     else if (SystemInfoRt.isLinux) {
       return OS.LINUX;
+    }
+    else if (SystemInfoRt.isHaiku) {
+      return OS.HAIKU;
     }
     else {
       throw new UnsupportedOperationException("Unsupported OS:" + SystemInfoRt.OS_NAME);
@@ -540,7 +544,7 @@ public final class PathManager {
   }
 
   /**
-   * Returns the path to the directory where log files are stored. Consider using {@link #getLogDir()} instead.  
+   * Returns the path to the directory where log files are stored. Consider using {@link #getLogDir()} instead.
    */
   public static @NotNull String getLogPath() {
     String path = ourLogPath;
@@ -781,7 +785,7 @@ public final class PathManager {
   }
 
   /**
-   * Return original value of the config path ignoring possible customizations made by {@link PathCustomizer}. 
+   * Return original value of the config path ignoring possible customizations made by {@link PathCustomizer}.
    */
   @ApiStatus.Internal
   public static @NotNull Path getOriginalConfigDir() {
